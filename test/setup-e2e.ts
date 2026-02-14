@@ -6,19 +6,20 @@ import { execSync } from 'child_process';
 
 
 const connectionString = process.env.DATABASE_URL;
-const adapter = new PrismaPg({ connectionString });
-const prisma = new PrismaClient({ adapter });
 
 
 function generateUniqueDatabaseUrl(schemaId: string) {
     if(!process.env.DATABASE_URL) throw new Error("Please provide Database url variable");
     const url = new URL(process.env.DATABASE_URL);
     url.searchParams.set('schema', schemaId);
-
+    
     return url.toString();
 }
 
-const schemaId = randomUUID();
+export const schemaId = randomUUID();
+
+const adapter = new PrismaPg({ connectionString });
+const prisma = new PrismaClient({ adapter });
 
 beforeAll(async () => {
     const databaseUrl = generateUniqueDatabaseUrl(schemaId);
