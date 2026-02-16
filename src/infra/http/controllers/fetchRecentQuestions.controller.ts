@@ -1,7 +1,7 @@
 import { Controller, Body, UseGuards, Get, Query } from "@nestjs/common";
 import { AuthGuard } from "@nestjs/passport";
 import { ZodValidationPipe } from "@/infra/http/pipes/zodValidationPipe";
-import { PrismaService } from "src/infra/prisma/prisma.service";
+import { PrismaService } from "src/infra/database/prisma/prisma.service";
 import z from "zod";
 
 const pageQueryParamSchema = z.string().optional().transform(Number).pipe(

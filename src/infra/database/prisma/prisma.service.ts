@@ -3,7 +3,7 @@ import { PrismaClient } from "prisma/generated/client";
 import { PrismaPg } from "@prisma/adapter-pg";
 import "dotenv/config"
 import { ConfigService } from "@nestjs/config";
-import { Env } from "../env";
+import { Env } from "../../env";
 
 
 @Injectable()

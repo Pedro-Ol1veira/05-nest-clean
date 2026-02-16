@@ -27,3 +27,8 @@ export type User = Prisma.UserModel
  * 
  */
 export type Question = Prisma.QuestionModel
+/**
+ * Model Answer
+ * 
+ */
+export type Answer = Prisma.AnswerModel
