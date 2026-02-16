@@ -3,8 +3,8 @@ import { CreateAccountController } from "./controllers/createAccount.controller"
 import { AuthenticateController } from "./controllers/authenticate.controller";
 import { CreateQuestionController } from "./controllers/createQuestion.controller";
 import { FetchRecentQuestionsController } from "./controllers/fetchRecentQuestions.controller";
-import { PrismaService } from '@/infra/database/prisma/prisma.service';
 import { DatabaseModule } from "../database/database.module";
+import { CreateQuestionUseCase } from "@/domain/forum/application/useCases/createQuestion";
 
 
 @Module({
@@ -16,7 +16,7 @@ import { DatabaseModule } from "../database/database.module";
     FetchRecentQuestionsController,
   ],
   providers: [
-    PrismaService
+    CreateQuestionUseCase
   ]
 })
 export class HttpModule {

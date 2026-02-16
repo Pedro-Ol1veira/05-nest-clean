@@ -1,18 +1,18 @@
 import { InMemoryQuestionsRepository } from '@/../test/repositories/InMemoryQuestionsRepository';
-import { createQuestionUseCase } from './createQuestion';
+import { CreateQuestionUseCase } from './createQuestion';
 import { UniqueEntityID } from '@/core/entities/uniqueEntityId';
 import { InMemoryQuestionAttachmentRepository } from '@/../test/repositories/InMemoryQuestionAttachmentRepository';
 
 let inMemoryQuestionsRepository: InMemoryQuestionsRepository;
 let inMemoryQuestionAttachmentRepository: InMemoryQuestionAttachmentRepository;
-let sut: createQuestionUseCase;
+let sut: CreateQuestionUseCase;
 describe('Create Question', () => {
 
     beforeEach(() => {
         inMemoryQuestionAttachmentRepository =
               new InMemoryQuestionAttachmentRepository();
         inMemoryQuestionsRepository = new InMemoryQuestionsRepository(inMemoryQuestionAttachmentRepository);
-        sut = new createQuestionUseCase(inMemoryQuestionsRepository);
+        sut = new CreateQuestionUseCase(inMemoryQuestionsRepository);
     })
 
     it('Should be able to create a question', async () => {
