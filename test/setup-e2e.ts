@@ -4,7 +4,6 @@ import { PrismaClient } from 'prisma/generated/client';
 import { randomUUID } from 'crypto';
 import { execSync } from 'child_process';
 
-
 const connectionString = process.env.DATABASE_URL;
 
 
@@ -16,7 +15,7 @@ function generateUniqueDatabaseUrl(schemaId: string) {
     return url.toString();
 }
 
-export const schemaId = randomUUID();
+const schemaId = randomUUID();
 
 const adapter = new PrismaPg({ connectionString });
 const prisma = new PrismaClient({ adapter });
