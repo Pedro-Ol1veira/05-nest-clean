@@ -1,12 +1,11 @@
 import { Entity } from "@/core/entities/entity";
 import { UniqueEntityID } from "@/core/entities/uniqueEntityId";
-import { Optional } from "@/core/types/optional";
 
 export interface CommentsProps {
   authorId: UniqueEntityID;
   content: string;
   createdAt: Date;
-  updatedAt?: Date;
+  updatedAt?: Date | null;
 }
 
 export abstract class Comments<Props extends CommentsProps> extends Entity<Props> {
