@@ -15,7 +15,6 @@ export type CreateQuestionBodySchema = z.infer<typeof createQuestionBodySchema>;
 
 
 @Controller('/questions')
-@UseGuards(AuthGuard('jwt'))
 export class CreateQuestionController {
 
     constructor(private readonly createQuestion: CreateQuestionUseCase) {}
