@@ -1,13 +1,13 @@
 import { InMemoryQuestionsRepository } from "@/../test/repositories/InMemoryQuestionsRepository";
 import { makeQuestion } from "@/../test/factories/makeQuestion";
 import { InMemoryQuestionCommentsRepository } from "@/../test/repositories/InMemoryQuestionCommentsRepository";
-import { commentOnQuestionUseCase } from "./commentOnQuestion";
+import { CommentOnQuestionUseCase } from "./commentOnQuestion";
 import { InMemoryQuestionAttachmentRepository } from "@/../test/repositories/InMemoryQuestionAttachmentRepository";
 
 let inMemoryQuestionCommentsRepository: InMemoryQuestionCommentsRepository;
 let inMemoryQuestionsRepository: InMemoryQuestionsRepository;
 let inMemoryQuestionAttachmentRepository: InMemoryQuestionAttachmentRepository;
-let sut: commentOnQuestionUseCase;
+let sut: CommentOnQuestionUseCase;
 
 describe("Comment On Question", () => {
   beforeEach(() => {
@@ -15,7 +15,7 @@ describe("Comment On Question", () => {
       new InMemoryQuestionAttachmentRepository();
     inMemoryQuestionsRepository = new InMemoryQuestionsRepository(inMemoryQuestionAttachmentRepository);
     inMemoryQuestionCommentsRepository = new InMemoryQuestionCommentsRepository();
-    sut = new commentOnQuestionUseCase(
+    sut = new CommentOnQuestionUseCase(
       inMemoryQuestionsRepository,
       inMemoryQuestionCommentsRepository,
     );

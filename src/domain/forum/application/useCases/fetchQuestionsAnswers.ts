@@ -1,26 +1,28 @@
 import { AnswersRepository } from "../repositories/answersRepository";
 import { Answer } from "../../enterprise/entities/answer";
 import { Either, right } from "@/core/either";
+import { Injectable } from "@nestjs/common";
 
-interface fetchRecentQuestionAnswerssUseCaseRequest {
+interface FetchQuestionAnswersUseCaseRequest {
     page: number;
     questionId: string;
 }
 
-type fetchRecentQuestionAnswerssUseCaseResponse = Either<
+type FetchQuestionAnswersUseCaseResponse = Either<
     null,
     {
-        questionanswerss: Answer[];
+        questionAnswers: Answer[];
     }
 > 
 
-export class fetchRecentQuestionAnswerssUseCase {
+@Injectable()
+export class FetchQuestionAnswersUseCase {
     constructor(
-        private questionanswerssRepository: AnswersRepository,
+        private questionanswersRepository: AnswersRepository,
     ) {}
-    async execute({ page, questionId }: fetchRecentQuestionAnswerssUseCaseRequest): Promise<fetchRecentQuestionAnswerssUseCaseResponse> {
-        const questionanswerss = await this.questionanswerssRepository.findManyByQuestionId({ page }, questionId);
+    async execute({ page, questionId }: FetchQuestionAnswersUseCaseRequest): Promise<FetchQuestionAnswersUseCaseResponse> {
+        const questionAnswers = await this.questionanswersRepository.findManyByQuestionId({ page }, questionId);
 
-        return right({ questionanswerss });
+        return right({ questionAnswers });
     }
 }

@@ -4,26 +4,28 @@ import { QuestionComments } from "../../enterprise/entities/questionComment";
 import { QuestionsCommentsRepository } from "../repositories/questionCommentsRepository";
 import { Either, left, right } from "@/core/either";
 import { ResourceNotFoundError } from "../../../../core/errors/errors/resourceNotFoundError";
+import { Injectable } from "@nestjs/common";
 
-interface commentOnQuestionUseCaseRequest {
+interface CommentOnQuestionUseCaseRequest {
     authorId: string;
     questionId: string;
     content: string;
 }
 
-type commentOnQuestionUseCaseResponse = Either< 
+type CommentOnQuestionUseCaseResponse = Either< 
     ResourceNotFoundError,
     {
         questionComment: QuestionComments;
     }
 >;
 
-export class commentOnQuestionUseCase {
+@Injectable()
+export class CommentOnQuestionUseCase {
     constructor(
         private questionsRepository: QuestionsRepository,
         private questionsCommentsRepository: QuestionsCommentsRepository
     ) {}
-    async execute({ authorId, questionId, content }: commentOnQuestionUseCaseRequest): Promise<commentOnQuestionUseCaseResponse> {
+    async execute({ authorId, questionId, content }: CommentOnQuestionUseCaseRequest): Promise<CommentOnQuestionUseCaseResponse> {
         const question = await this.questionsRepository.findById(questionId);
 
         if(!question) return left(new ResourceNotFoundError());

@@ -4,22 +4,24 @@ import { Question } from "../../enterprise/entities/question";
 import { Either, left, right } from "@/core/either";
 import { ResourceNotFoundError } from "../../../../core/errors/errors/resourceNotFoundError";
 import { NotAllowedError } from "../../../../core/errors/errors/notAllowedError";
+import { Injectable } from "@nestjs/common";
 
-interface deleteQuestionUseCaseRequest {
+interface DeleteQuestionUseCaseRequest {
     questionId: string;
     authorId: string;
 }
 
-type deleteQuestionUseCaseResponse = Either<
+type DeleteQuestionUseCaseResponse = Either<
     ResourceNotFoundError | NotAllowedError,
     {}
 >
 
-export class deleteQuestionUseCase {
+@Injectable()
+export class DeleteQuestionUseCase {
     constructor(
         private questionsRepository: QuestionsRepository,
     ) {}
-    async execute({ questionId, authorId }: deleteQuestionUseCaseRequest): Promise<deleteQuestionUseCaseResponse> {
+    async execute({ questionId, authorId }: DeleteQuestionUseCaseRequest): Promise<DeleteQuestionUseCaseResponse> {
         const question = await this.questionsRepository.findById(questionId);
 
         if(!question) return left(new ResourceNotFoundError());

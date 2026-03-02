@@ -1,20 +1,20 @@
 import { InMemoryAnswersRepository } from "@/../test/repositories/InMemoryAnswersRepository";
 import { makeAnswer } from "@/../test/factories/makeAnswer";
 import { InMemoryAnswerCommentsRepository } from "@/../test/repositories/InMemoryAnswerCommentsRepository";
-import { commentOnAnswerUseCase } from "./commentOnAnswer";
+import { CommentOnAnswerUseCase } from "./commentOnAnswer";
 import { InMemoryAnswerAttachmentRepository } from "@/../test/repositories/InMemoryAnsewerAttachmentsRepository";
 
 let inMemoryAnswerCommentsRepository: InMemoryAnswerCommentsRepository;
 let inMemoryAnswerAttachmentRepository: InMemoryAnswerAttachmentRepository;
 let inMemoryAnswersRepository: InMemoryAnswersRepository;
-let sut: commentOnAnswerUseCase;
+let sut: CommentOnAnswerUseCase;
 
 describe("Comment On Answer", () => {
   beforeEach(() => {
     inMemoryAnswerAttachmentRepository = new InMemoryAnswerAttachmentRepository();
     inMemoryAnswersRepository = new InMemoryAnswersRepository(inMemoryAnswerAttachmentRepository);
     inMemoryAnswerCommentsRepository = new InMemoryAnswerCommentsRepository();
-    sut = new commentOnAnswerUseCase(
+    sut = new CommentOnAnswerUseCase(
       inMemoryAnswersRepository,
       inMemoryAnswerCommentsRepository,
     );

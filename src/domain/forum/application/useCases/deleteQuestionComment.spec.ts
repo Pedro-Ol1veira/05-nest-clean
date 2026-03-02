@@ -1,16 +1,16 @@
 import { InMemoryQuestionCommentsRepository } from "@/../test/repositories/InMemoryQuestionCommentsRepository";
-import { deleteQuestionCommentUseCase } from "./deleteQuestionComment";
+import { DeleteQuestionCommentUseCase } from "./deleteQuestionComment";
 import { makeQuestionComment } from "@/../test/factories/makeQuestionComment";
 import { NotAllowedError } from "../../../../core/errors/errors/notAllowedError";
 
 let inMemoryQuestionCommentsRepository: InMemoryQuestionCommentsRepository;
-let sut: deleteQuestionCommentUseCase;
+let sut: DeleteQuestionCommentUseCase;
 
 describe("Delete Question Comment", () => {
   beforeEach(() => {
     inMemoryQuestionCommentsRepository =
       new InMemoryQuestionCommentsRepository();
-    sut = new deleteQuestionCommentUseCase(inMemoryQuestionCommentsRepository);
+    sut = new DeleteQuestionCommentUseCase(inMemoryQuestionCommentsRepository);
   });
 
   it("Should be able to delete comment on question", async () => {

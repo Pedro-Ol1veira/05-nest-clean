@@ -1,6 +1,6 @@
 import { InMemoryQuestionsRepository } from "@/../test/repositories/InMemoryQuestionsRepository";
 import { makeQuestion } from "@/../test/factories/makeQuestion";
-import { deleteQuestionUseCase } from "./deleteQuestion";
+import { DeleteQuestionUseCase } from "./deleteQuestion";
 import { UniqueEntityID } from "@/core/entities/uniqueEntityId";
 import { NotAllowedError } from "../../../../core/errors/errors/notAllowedError";
 import { InMemoryQuestionAttachmentRepository } from "@/../test/repositories/InMemoryQuestionAttachmentRepository";
@@ -8,13 +8,13 @@ import { makeQuestionAttachment } from "@/../test/factories/makeAttachmentReposi
 
 let inMemoryQuestionsRepository: InMemoryQuestionsRepository;
 let inMemoryQuestionAttachmentRepository: InMemoryQuestionAttachmentRepository;
-let sut: deleteQuestionUseCase;
+let sut: DeleteQuestionUseCase;
 describe("Delete Question", () => {
   beforeEach(() => {
     inMemoryQuestionAttachmentRepository =
       new InMemoryQuestionAttachmentRepository();
     inMemoryQuestionsRepository = new InMemoryQuestionsRepository(inMemoryQuestionAttachmentRepository);
-    sut = new deleteQuestionUseCase(inMemoryQuestionsRepository);
+    sut = new DeleteQuestionUseCase(inMemoryQuestionsRepository);
   });
 
   it("Should be able to delete a question", async () => {

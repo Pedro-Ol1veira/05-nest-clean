@@ -7,8 +7,9 @@ import { QuestionAttachmentsRepository } from "../repositories/questionAttachmen
 import { QuestionAttachmentList } from "../../enterprise/entities/questionAttachmentList";
 import { QuestionAttachment } from "../../enterprise/entities/questionAttachment";
 import { UniqueEntityID } from "@/core/entities/uniqueEntityId";
+import { Injectable } from "@nestjs/common";
 
-interface editQuestionUseCaseRequest {
+interface EditQuestionUseCaseRequest {
   authorId: string;
   title: string;
   content: string;
@@ -16,14 +17,15 @@ interface editQuestionUseCaseRequest {
   attachmentsIds: string[];
 }
 
-type editQuestionUseCaseResponse = Either<
+type EditQuestionUseCaseResponse = Either<
   ResourceNotFoundError | NotAllowedError,
   {
     question: Question;
   }
 >;
 
-export class editQuestionUseCase {
+@Injectable()
+export class EditQuestionUseCase {
   constructor(
     private questionsRepository: QuestionsRepository,
     private questionAttachmentRepository: QuestionAttachmentsRepository,
@@ -34,7 +36,7 @@ export class editQuestionUseCase {
     content,
     authorId,
     attachmentsIds,
-  }: editQuestionUseCaseRequest): Promise<editQuestionUseCaseResponse> {
+  }: EditQuestionUseCaseRequest): Promise<EditQuestionUseCaseResponse> {
     const question = await this.questionsRepository.findById(questionId);
 
     if (!question) return left(new ResourceNotFoundError());

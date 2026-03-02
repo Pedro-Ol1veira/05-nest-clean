@@ -1,6 +1,6 @@
 import { InMemoryQuestionsRepository } from "@/../test/repositories/InMemoryQuestionsRepository";
 import { makeQuestion } from "@/../test/factories/makeQuestion";
-import { editQuestionUseCase } from "./editQuestion";
+import { EditQuestionUseCase } from "./editQuestion";
 import { UniqueEntityID } from "@/core/entities/uniqueEntityId";
 import { NotAllowedError } from "../../../../core/errors/errors/notAllowedError";
 import { InMemoryQuestionAttachmentRepository } from "@/../test/repositories/InMemoryQuestionAttachmentRepository";
@@ -8,14 +8,14 @@ import { makeQuestionAttachment } from "@/../test/factories/makeAttachmentReposi
 
 let inMemoryQuestionsRepository: InMemoryQuestionsRepository;
 let inMemoryQuestionAttachmentRepository: InMemoryQuestionAttachmentRepository;
-let sut: editQuestionUseCase;
+let sut: EditQuestionUseCase;
 describe("Edit Question", () => {
   beforeEach(() => {
     inMemoryQuestionAttachmentRepository =
       new InMemoryQuestionAttachmentRepository();
     inMemoryQuestionsRepository = new InMemoryQuestionsRepository(inMemoryQuestionAttachmentRepository);
     inMemoryQuestionAttachmentRepository = new InMemoryQuestionAttachmentRepository();
-    sut = new editQuestionUseCase(inMemoryQuestionsRepository, inMemoryQuestionAttachmentRepository);
+    sut = new EditQuestionUseCase(inMemoryQuestionsRepository, inMemoryQuestionAttachmentRepository);
   });
 
   it("Should be able to edit a question", async () => {

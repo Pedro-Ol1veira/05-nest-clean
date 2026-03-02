@@ -1,15 +1,15 @@
 import { InMemoryAnswerCommentsRepository } from "@/../test/repositories/InMemoryAnswerCommentsRepository";
-import { deleteAnswerCommentUseCase } from "./deleteAnswerComment";
+import { DeleteAnswerCommentUseCase } from "./deleteAnswerComment";
 import { makeAnswerComment } from "@/../test/factories/makeAnswerComment";
 import { NotAllowedError } from "../../../../core/errors/errors/notAllowedError";
 
 let inMemoryAnswerCommentsRepository: InMemoryAnswerCommentsRepository;
-let sut: deleteAnswerCommentUseCase;
+let sut: DeleteAnswerCommentUseCase;
 
 describe("Delete Answer Comment", () => {
   beforeEach(() => {
     inMemoryAnswerCommentsRepository = new InMemoryAnswerCommentsRepository();
-    sut = new deleteAnswerCommentUseCase(inMemoryAnswerCommentsRepository);
+    sut = new DeleteAnswerCommentUseCase(inMemoryAnswerCommentsRepository);
   });
 
   it("Should be able to delete comment on answer", async () => {

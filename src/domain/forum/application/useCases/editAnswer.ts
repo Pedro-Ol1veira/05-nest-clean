@@ -7,27 +7,29 @@ import { AnswerAttachmentList } from "../../enterprise/entities/answerAttachment
 import { AnswerAttachmentsRepository } from "../repositories/answerAttachmentsRepository";
 import { AnswerAttachment } from "../../enterprise/entities/answerAttachment";
 import { UniqueEntityID } from "@/core/entities/uniqueEntityId";
+import { Injectable } from "@nestjs/common";
 
-interface editAnswerUseCaseRequest {
+interface EditAnswerUseCaseRequest {
     authorId: string;
     answerId: string;
     content: string;
     attachmentsIds: string[];
 }
 
-type editAnswerUseCaseResponse = Either<
+type EditAnswerUseCaseResponse = Either<
     ResourceNotFoundError | NotAllowedError,
     {
         answer: Answer;
     }
 > 
 
-export class editAnswerUseCase {
+@Injectable()
+export class EditAnswerUseCase {
     constructor(
         private answersRepository: AnswersRepository,
         private answerAttachmentsRepository: AnswerAttachmentsRepository
     ) {}
-    async execute({ answerId, content, authorId, attachmentsIds }: editAnswerUseCaseRequest): Promise<editAnswerUseCaseResponse> {
+    async execute({ answerId, content, authorId, attachmentsIds }: EditAnswerUseCaseRequest): Promise<EditAnswerUseCaseResponse> {
         const answer = await this.answersRepository.findById(answerId);
 
         if(!answer) return left(new ResourceNotFoundError());

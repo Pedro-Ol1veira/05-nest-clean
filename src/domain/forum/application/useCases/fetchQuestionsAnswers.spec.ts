@@ -1,4 +1,4 @@
-import { fetchRecentQuestionAnswerssUseCase } from './fetchQuestionsAnswers';
+import { FetchQuestionAnswersUseCase } from './fetchQuestionsAnswers';
 import { InMemoryAnswersRepository } from '@/../test/repositories/InMemoryAnswersRepository';
 import { makeAnswer } from '@/../test/factories/makeAnswer';
 import { UniqueEntityID } from '@/core/entities/uniqueEntityId';
@@ -6,13 +6,13 @@ import { InMemoryAnswerAttachmentRepository } from '@/../test/repositories/InMem
 
 let inMemoryAnswersRepository: InMemoryAnswersRepository;
 let inMemoryAnswerAttachmentRepository: InMemoryAnswerAttachmentRepository;
-let sut: fetchRecentQuestionAnswerssUseCase;
+let sut: FetchQuestionAnswersUseCase;
 describe('Fetch Question Answers', () => {
 
     beforeEach(() => {
         inMemoryAnswerAttachmentRepository = new InMemoryAnswerAttachmentRepository();
         inMemoryAnswersRepository = new InMemoryAnswersRepository(inMemoryAnswerAttachmentRepository);
-        sut = new fetchRecentQuestionAnswerssUseCase(inMemoryAnswersRepository);
+        sut = new FetchQuestionAnswersUseCase(inMemoryAnswersRepository);
     })
 
     it('Should be able to fetch question answers', async () => {
@@ -25,7 +25,7 @@ describe('Fetch Question Answers', () => {
             page: 1
         });
 
-        expect(result.value?.questionanswerss).toHaveLength(3);
+        expect(result.value?.questionAnswers).toHaveLength(3);
     });
 
     it('Should be able to fetch paginated question answers', async () => {
@@ -38,7 +38,7 @@ describe('Fetch Question Answers', () => {
             page: 2,
         });
 
-        expect(result.value?.questionanswerss).toHaveLength(2);
+        expect(result.value?.questionAnswers).toHaveLength(2);
     });
     
 })

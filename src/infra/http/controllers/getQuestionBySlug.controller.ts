@@ -1,11 +1,11 @@
 import { Controller, Get, BadRequestException, Param } from "@nestjs/common";
-import { getQuestionBySlugUseCase } from "@/domain/forum/application/useCases/getQuestionBySlug";
+import { GetQuestionBySlugUseCase } from "@/domain/forum/application/useCases/getQuestionBySlug";
 import { QuestionPresenter } from "../presenters/questionPresenter";
 
 @Controller('/questions/:slug')
 export class GetQuestionBySlugController {
 
-    constructor(private readonly getQuestionBySlug: getQuestionBySlugUseCase) {}
+    constructor(private readonly getQuestionBySlug: GetQuestionBySlugUseCase) {}
     
     @Get()
     async handle(@Param('slug') slug: string){
