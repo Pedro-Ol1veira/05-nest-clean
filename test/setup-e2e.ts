@@ -1,8 +1,11 @@
-import 'dotenv/config'
+import { config } from 'dotenv'
 import { PrismaPg } from '@prisma/adapter-pg';
 import { PrismaClient } from 'prisma/generated/client';
 import { randomUUID } from 'crypto';
 import { execSync } from 'child_process';
+
+config({ path: '.env', override: true});
+config({ path: '.env.test', override: true});
 
 const connectionString = process.env.DATABASE_URL;
 

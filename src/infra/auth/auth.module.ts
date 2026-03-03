@@ -5,7 +5,7 @@ import { ConfigService } from "@nestjs/config";
 import { JwtStrategy } from "./jwt.strategy";
 import { APP_GUARD } from "@nestjs/core";
 import { JwtAuthGuard } from "./jwtAuth.guard";
-import { EnvService } from "../env.service";
+import { EnvService } from "../env/env.service";
 
 @Module({
     imports:[
