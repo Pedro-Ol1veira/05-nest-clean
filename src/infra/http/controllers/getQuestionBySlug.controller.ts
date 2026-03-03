@@ -5,7 +5,7 @@ import { QuestionPresenter } from "../presenters/questionPresenter";
 @Controller('/questions/:slug')
 export class GetQuestionBySlugController {
 
-    constructor(private readonly getQuestionBySlug: GetQuestionBySlugUseCase) {}
+    constructor(private  getQuestionBySlug: GetQuestionBySlugUseCase) {}
     
     @Get()
     async handle(@Param('slug') slug: string){

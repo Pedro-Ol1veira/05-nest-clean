@@ -15,7 +15,7 @@ export type EditAnswerBodySchema = z.infer<typeof editAnswerBodySchema>;
 @Controller('/answers/:id')
 export class EditAnswerController {
 
-    constructor(private readonly editAnswer: EditAnswerUseCase) {}
+    constructor(private  editAnswer: EditAnswerUseCase) {}
     
     @Put()
     @HttpCode(204)

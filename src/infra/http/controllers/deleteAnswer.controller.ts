@@ -8,7 +8,7 @@ import { DeleteAnswerUseCase } from "@/domain/forum/application/useCases/deleteA
 @Controller('/answers/:id')
 export class DeleteAnswerController {
 
-    constructor(private readonly deleteAnswer: DeleteAnswerUseCase) {}
+    constructor(private  deleteAnswer: DeleteAnswerUseCase) {}
     
     @Delete()
     @HttpCode(204)

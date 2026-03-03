@@ -1454,7 +1454,7 @@ export interface QuestionDelegate<ExtArgs extends runtime.Types.Extensions.Inter
 /**
  * Fields of the Question model
  */
-readonly fields: QuestionFieldRefs;
+ fields: QuestionFieldRefs;
 }
 
 /**
@@ -1464,7 +1464,7 @@ readonly fields: QuestionFieldRefs;
  * https://github.com/prisma/prisma-client-js/issues/707
  */
 export interface Prisma__QuestionClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-  readonly [Symbol.toStringTag]: "PrismaPromise"
+   [Symbol.toStringTag]: "PrismaPromise"
   author<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   bestAnswer<T extends Prisma.Question$bestAnswerArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Question$bestAnswerArgs<ExtArgs>>): Prisma.Prisma__AnswerClient<runtime.Types.Result.GetResult<Prisma.$AnswerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   answers<T extends Prisma.Question$answersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Question$answersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AnswerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -1499,14 +1499,14 @@ export interface Prisma__QuestionClient<T, Null = never, ExtArgs extends runtime
  * Fields of the Question model
  */
 export interface QuestionFieldRefs {
-  readonly id: Prisma.FieldRef<"Question", 'String'>
-  readonly title: Prisma.FieldRef<"Question", 'String'>
-  readonly slug: Prisma.FieldRef<"Question", 'String'>
-  readonly content: Prisma.FieldRef<"Question", 'String'>
-  readonly createdAt: Prisma.FieldRef<"Question", 'DateTime'>
-  readonly updatedAt: Prisma.FieldRef<"Question", 'DateTime'>
-  readonly authorId: Prisma.FieldRef<"Question", 'String'>
-  readonly bestAnswerId: Prisma.FieldRef<"Question", 'String'>
+   id: Prisma.FieldRef<"Question", 'String'>
+   title: Prisma.FieldRef<"Question", 'String'>
+   slug: Prisma.FieldRef<"Question", 'String'>
+   content: Prisma.FieldRef<"Question", 'String'>
+   createdAt: Prisma.FieldRef<"Question", 'DateTime'>
+   updatedAt: Prisma.FieldRef<"Question", 'DateTime'>
+   authorId: Prisma.FieldRef<"Question", 'String'>
+   bestAnswerId: Prisma.FieldRef<"Question", 'String'>
 }
     
 

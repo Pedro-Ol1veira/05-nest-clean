@@ -18,7 +18,7 @@ type authenticateBodySchema = z.infer<typeof authenticateBodySchema>
 export class AuthenticateController {
 
     constructor(
-        private readonly authenticateStudent: AuthenticateStudentUseCase,
+        private  authenticateStudent: AuthenticateStudentUseCase,
     ) {}
     
     @Post()

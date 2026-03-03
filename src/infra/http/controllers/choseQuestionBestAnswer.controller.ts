@@ -7,7 +7,7 @@ import { ChoseQuestionBestAnswerUseCase } from "@/domain/forum/application/useCa
 @Controller('/answers/:answerId/chose-as-best')
 export class ChoseQuestionBestAnswerController {
 
-    constructor(private readonly choseQuestionBestAnswer: ChoseQuestionBestAnswerUseCase) {}
+    constructor(private  choseQuestionBestAnswer: ChoseQuestionBestAnswerUseCase) {}
     
     @Patch()
     @HttpCode(204)

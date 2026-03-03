@@ -364,7 +364,7 @@ export type GetHavingFields<T> = {
  * Convert tuple to union
  */
 type _TupleToUnion<T> = T extends (infer E)[] ? E : never
-type TupleToUnion<K extends readonly any[]> = _TupleToUnion<K>
+type TupleToUnion<K extends  any[]> = _TupleToUnion<K>
 export type MaybeTupleToUnion<T> = T extends any[] ? TupleToUnion<T> : T
 
 /**

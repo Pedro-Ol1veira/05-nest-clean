@@ -1,7 +1,7 @@
 import { Entity } from "@/core/entities/entity";
 import { UniqueEntityID } from "@/core/entities/uniqueEntityId";
 
-interface AttachmentProps {
+export interface AttachmentProps {
     title: string;
     url: string;
     

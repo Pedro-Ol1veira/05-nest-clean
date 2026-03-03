@@ -1210,7 +1210,7 @@ export interface CommentDelegate<ExtArgs extends runtime.Types.Extensions.Intern
 /**
  * Fields of the Comment model
  */
-readonly fields: CommentFieldRefs;
+ fields: CommentFieldRefs;
 }
 
 /**
@@ -1220,7 +1220,7 @@ readonly fields: CommentFieldRefs;
  * https://github.com/prisma/prisma-client-js/issues/707
  */
 export interface Prisma__CommentClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-  readonly [Symbol.toStringTag]: "PrismaPromise"
+   [Symbol.toStringTag]: "PrismaPromise"
   question<T extends Prisma.Comment$questionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Comment$questionArgs<ExtArgs>>): Prisma.Prisma__QuestionClient<runtime.Types.Result.GetResult<Prisma.$QuestionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   answer<T extends Prisma.Comment$answerArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Comment$answerArgs<ExtArgs>>): Prisma.Prisma__AnswerClient<runtime.Types.Result.GetResult<Prisma.$AnswerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   author<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
@@ -1253,13 +1253,13 @@ export interface Prisma__CommentClient<T, Null = never, ExtArgs extends runtime.
  * Fields of the Comment model
  */
 export interface CommentFieldRefs {
-  readonly id: Prisma.FieldRef<"Comment", 'String'>
-  readonly content: Prisma.FieldRef<"Comment", 'String'>
-  readonly createdAt: Prisma.FieldRef<"Comment", 'DateTime'>
-  readonly updatedAt: Prisma.FieldRef<"Comment", 'DateTime'>
-  readonly authorId: Prisma.FieldRef<"Comment", 'String'>
-  readonly questionId: Prisma.FieldRef<"Comment", 'String'>
-  readonly answerId: Prisma.FieldRef<"Comment", 'String'>
+   id: Prisma.FieldRef<"Comment", 'String'>
+   content: Prisma.FieldRef<"Comment", 'String'>
+   createdAt: Prisma.FieldRef<"Comment", 'DateTime'>
+   updatedAt: Prisma.FieldRef<"Comment", 'DateTime'>
+   authorId: Prisma.FieldRef<"Comment", 'String'>
+   questionId: Prisma.FieldRef<"Comment", 'String'>
+   answerId: Prisma.FieldRef<"Comment", 'String'>
 }
     
 

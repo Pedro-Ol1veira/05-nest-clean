@@ -14,7 +14,7 @@ type PageQueryParamSchema = z.infer<typeof pageQueryParamSchema>;
 @Controller('/questions/:questionId/comments')
 export class FetchQuestionCommentsController {
 
-    constructor(private readonly fetchQuestionComments: FetchQuestionCommentsUseCase) {}
+    constructor(private  fetchQuestionComments: FetchQuestionCommentsUseCase) {}
     
     @Get()
     async handle(

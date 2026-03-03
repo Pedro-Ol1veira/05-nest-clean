@@ -10,7 +10,7 @@ import { PrismaStudentMapper } from "../mappers/prismaStudentMapper";
 @Injectable()
 export class PrismaStudentsRepository implements StudentsRepository {
 
-    constructor(private readonly prisma: PrismaService) {}
+    constructor(private  prisma: PrismaService) {}
     
     async create(student: Student): Promise<void> {
         const data = PrismaStudentMapper.toPrisma(student);

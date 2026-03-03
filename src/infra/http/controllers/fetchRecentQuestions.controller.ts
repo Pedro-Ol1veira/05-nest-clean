@@ -14,7 +14,7 @@ type PageQueryParamSchema = z.infer<typeof pageQueryParamSchema>;
 @Controller('/questions')
 export class FetchRecentQuestionsController {
 
-    constructor(private readonly fetchRecentQuestions: FetchRecentQuestionsUseCase) {}
+    constructor(private  fetchRecentQuestions: FetchRecentQuestionsUseCase) {}
     
     @Get()
     async handle(@Query('page', queryValidationPipe) page: PageQueryParamSchema){

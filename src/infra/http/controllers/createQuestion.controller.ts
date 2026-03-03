@@ -8,7 +8,8 @@ import { CreateQuestionUseCase } from "@/domain/forum/application/useCases/creat
 
 const createQuestionBodySchema = z.object({
     title: z.string(),
-    content: z.string()
+    content: z.string(),
+    attachments: z.array(z.uuid())
 });
 
 export type CreateQuestionBodySchema = z.infer<typeof createQuestionBodySchema>;
@@ -17,21 +18,21 @@ export type CreateQuestionBodySchema = z.infer<typeof createQuestionBodySchema>;
 @Controller('/questions')
 export class CreateQuestionController {
 
-    constructor(private readonly createQuestion: CreateQuestionUseCase) {}
+    constructor(private  createQuestion: CreateQuestionUseCase) {}
     
     @Post()
     async handle(
         @Body(new ZodValidationPipe(createQuestionBodySchema)) body: CreateQuestionBodySchema,
         @CurrentUser() user: UserPayload
     ) {
-        const { content, title } = body;
+        const { content, title, attachments } = body;
         const { sub: userId } = user;
 
         const result = await this.createQuestion.execute({
             title,
             content,
             authorId: userId,
-            attachmentsIds: []
+            attachmentsIds: attachments
         });
 
         if(result.isLeft()) throw new BadRequestException();

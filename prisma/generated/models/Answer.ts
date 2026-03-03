@@ -1366,7 +1366,7 @@ export interface AnswerDelegate<ExtArgs extends runtime.Types.Extensions.Interna
 /**
  * Fields of the Answer model
  */
-readonly fields: AnswerFieldRefs;
+ fields: AnswerFieldRefs;
 }
 
 /**
@@ -1376,7 +1376,7 @@ readonly fields: AnswerFieldRefs;
  * https://github.com/prisma/prisma-client-js/issues/707
  */
 export interface Prisma__AnswerClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-  readonly [Symbol.toStringTag]: "PrismaPromise"
+   [Symbol.toStringTag]: "PrismaPromise"
   author<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   bestAnswerOn<T extends Prisma.Answer$bestAnswerOnArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Answer$bestAnswerOnArgs<ExtArgs>>): Prisma.Prisma__QuestionClient<runtime.Types.Result.GetResult<Prisma.$QuestionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   question<T extends Prisma.QuestionDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.QuestionDefaultArgs<ExtArgs>>): Prisma.Prisma__QuestionClient<runtime.Types.Result.GetResult<Prisma.$QuestionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
@@ -1411,12 +1411,12 @@ export interface Prisma__AnswerClient<T, Null = never, ExtArgs extends runtime.T
  * Fields of the Answer model
  */
 export interface AnswerFieldRefs {
-  readonly id: Prisma.FieldRef<"Answer", 'String'>
-  readonly content: Prisma.FieldRef<"Answer", 'String'>
-  readonly createdAt: Prisma.FieldRef<"Answer", 'DateTime'>
-  readonly updatedAt: Prisma.FieldRef<"Answer", 'DateTime'>
-  readonly authorId: Prisma.FieldRef<"Answer", 'String'>
-  readonly questionId: Prisma.FieldRef<"Answer", 'String'>
+   id: Prisma.FieldRef<"Answer", 'String'>
+   content: Prisma.FieldRef<"Answer", 'String'>
+   createdAt: Prisma.FieldRef<"Answer", 'DateTime'>
+   updatedAt: Prisma.FieldRef<"Answer", 'DateTime'>
+   authorId: Prisma.FieldRef<"Answer", 'String'>
+   questionId: Prisma.FieldRef<"Answer", 'String'>
 }
     
 

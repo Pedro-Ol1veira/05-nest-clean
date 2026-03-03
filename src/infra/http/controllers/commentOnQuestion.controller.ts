@@ -15,7 +15,7 @@ export type CommentOnQuestionBodySchema = z.infer<typeof commentOnQuestionBodySc
 @Controller('/questions/:questionId/comments')
 export class CommentOnQuestionController {
 
-    constructor(private readonly commentOnQuestion: CommentOnQuestionUseCase) {}
+    constructor(private  commentOnQuestion: CommentOnQuestionUseCase) {}
     
     @Post()
     async handle(
