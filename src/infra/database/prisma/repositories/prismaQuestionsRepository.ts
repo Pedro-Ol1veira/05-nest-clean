@@ -35,7 +35,7 @@ export class PrismaQuestionsRepository implements QuestionsRepository {
             }),
             this.questionAttachmentsRepository.createMany(question.attachments.getNewItems()),
             this.questionAttachmentsRepository.deleteMany(question.attachments.getRemovedItems())
-        ]);
+        ])
     }
     
     async findBySlug(slug: string): Promise<Question | null> {

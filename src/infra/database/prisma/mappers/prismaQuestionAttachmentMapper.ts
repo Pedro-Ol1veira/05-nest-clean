@@ -14,7 +14,7 @@ export class PrismaQuestionAttachmentMapper{
     }
 
     static toPrismaUpdateMany(attachments: QuestionAttachment[]): Prisma.AttachmentUpdateManyArgs {
-        const attachmentsIds = attachments.map(item => {
+        const attachmentsIds = attachments.map((item) => {
             return item.attachmentId.toString()
         });
 
