@@ -27,7 +27,7 @@ export class DeleteAnswerUseCase {
 
         if(authorId !== answer.authorId.toString()) return left(new NotAllowedError());
 
-        this.answersRepository.delete(answer);
+        await this.answersRepository.delete(answer);
         return right({});
     }
 }

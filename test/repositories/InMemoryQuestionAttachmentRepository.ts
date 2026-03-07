@@ -2,6 +2,8 @@ import { QuestionAttachmentsRepository } from "@/domain/forum/application/reposi
 import { QuestionAttachment } from "@/domain/forum/enterprise/entities/questionAttachment";
 
 export class InMemoryQuestionAttachmentRepository implements QuestionAttachmentsRepository {
+  public items: QuestionAttachment[] = [];
+  
   async createMany(attachments: QuestionAttachment[]): Promise<void> {
     this.items.push(...attachments);
   }
@@ -12,7 +14,6 @@ export class InMemoryQuestionAttachmentRepository implements QuestionAttachments
 
     this.items = questionAttachments;
   }
-  public items: QuestionAttachment[] = [];
   
   async findManyByQuestionId(
     questionId: string,

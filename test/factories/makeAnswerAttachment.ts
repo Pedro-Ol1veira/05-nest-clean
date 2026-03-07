@@ -1,5 +1,7 @@
 import { UniqueEntityID } from "@/core/entities/uniqueEntityId";
 import { AnswerAttachment, AnswerAttachmentProps } from "@/domain/forum/enterprise/entities/answerAttachment";
+import { PrismaService } from "@/infra/database/prisma/prisma.service";
+import { Injectable } from "@nestjs/common";
 
 export function makeAnswerAttachment(
   orverride: Partial<AnswerAttachmentProps> = {},
@@ -15,4 +17,24 @@ export function makeAnswerAttachment(
   );
 
   return answerAttachment;
+}
+
+@Injectable()
+export class AnswerAttachmentFactory {
+  constructor(private prisma: PrismaService) {}
+
+  async makePrismaAnswerAttachments(data: Partial<AnswerAttachmentProps> = {}): Promise<AnswerAttachment>{
+    const answerAttachment = makeAnswerAttachment(data);
+
+    await this.prisma.attachment.update({
+      where: {
+        id: answerAttachment.attachmentId.toString()
+      },
+      data: {
+        answerId: answerAttachment.answerId.toString()
+      }
+    });
+
+    return answerAttachment;
+  }
 }
