@@ -4,7 +4,6 @@ import { INestApplication } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
 import { Test } from "@nestjs/testing";
 import request from "supertest";
-import { AnswerFactory } from "test/factories/makeAnswer";
 import { QuestionFactory } from "test/factories/makeQuestion";
 import { QuestionCommentFactory } from "test/factories/makeQuestionComment";
 import { StudentFactory } from "test/factories/makeStudent";
@@ -31,7 +30,9 @@ describe("Fetch question comments (E2E)", () => {
   });
 
   test("[Get] /questions/:questionId/comments", async () => {
-    const user = await studentFactory.makePrismaStudent();
+    const user = await studentFactory.makePrismaStudent({
+      name: "teste"
+    });
 
     const accessToken = jwt.sign({ sub: user.id.toString() });
 
@@ -51,9 +52,9 @@ describe("Fetch question comments (E2E)", () => {
     expect(response.statusCode).toBe(200);
     expect(response.body).toEqual({
         comments: expect.arrayContaining([
-            expect.objectContaining({ content: "Comment 01"}),
-            expect.objectContaining({ content: "Comment 02"}),
-            expect.objectContaining({ content: "Comment 03"}),
+            expect.objectContaining({ content: "Comment 01", authorName: 'teste'}),
+            expect.objectContaining({ content: "Comment 02", authorName: 'teste'}),
+            expect.objectContaining({ content: "Comment 03", authorName: 'teste'}),
         ])
     });
 
