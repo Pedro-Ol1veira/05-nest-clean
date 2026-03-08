@@ -5,15 +5,25 @@ import { UniqueEntityID } from "@/core/entities/uniqueEntityId";
 import { NotAllowedError } from "../../../../core/errors/errors/notAllowedError";
 import { InMemoryQuestionAttachmentRepository } from "@/../test/repositories/InMemoryQuestionAttachmentRepository";
 import { makeQuestionAttachment } from "test/factories/makeQuestionAttachment";
+import { InMemoryAttachmentsRepository } from "test/repositories/InMemoryAttachmentsRepository";
+import { InMemoryStudentsRepository } from "test/repositories/InMemoryStudentsRepository";
 
 let inMemoryQuestionsRepository: InMemoryQuestionsRepository;
 let inMemoryQuestionAttachmentRepository: InMemoryQuestionAttachmentRepository;
+let inMemoryAttachmentsRepository: InMemoryAttachmentsRepository;
+let inMemoryStudentsRepository: InMemoryStudentsRepository;
 let sut: DeleteQuestionUseCase;
 describe("Delete Question", () => {
   beforeEach(() => {
+    inMemoryAttachmentsRepository = new InMemoryAttachmentsRepository();
+    inMemoryStudentsRepository = new InMemoryStudentsRepository();
     inMemoryQuestionAttachmentRepository =
       new InMemoryQuestionAttachmentRepository();
-    inMemoryQuestionsRepository = new InMemoryQuestionsRepository(inMemoryQuestionAttachmentRepository);
+    inMemoryQuestionsRepository = new InMemoryQuestionsRepository(
+      inMemoryQuestionAttachmentRepository,
+      inMemoryAttachmentsRepository,
+      inMemoryStudentsRepository,
+    );
     sut = new DeleteQuestionUseCase(inMemoryQuestionsRepository);
   });
 
