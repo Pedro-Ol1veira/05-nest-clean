@@ -7,6 +7,7 @@ import { PrismaQuestionMapper } from "../mappers/prismaQuestionMapper";
 import { QuestionAttachmentsRepository } from "@/domain/forum/application/repositories/questionAttachmentsRepository";
 import { QuestionDetails } from "@/domain/forum/enterprise/entities/value-objects/questionDetails";
 import { PrismaQuestionWithDetailsMapper } from "../mappers/prismaQuestionDetailsMapper";
+import { DomainEvents } from "@/core/events/domainEvents";
 
 @Injectable()
 export class PrismaQuestionsRepository implements QuestionsRepository {
@@ -24,6 +25,7 @@ export class PrismaQuestionsRepository implements QuestionsRepository {
         });
 
         await this.questionAttachmentsRepository.createMany(question.attachments.getItems());
+        DomainEvents.dispatchEventsForAggregate(question.id);
     }
     async save(question: Question): Promise<void> {
         const data = PrismaQuestionMapper.toPrisma(question);
@@ -38,6 +40,8 @@ export class PrismaQuestionsRepository implements QuestionsRepository {
             this.questionAttachmentsRepository.createMany(question.attachments.getNewItems()),
             this.questionAttachmentsRepository.deleteMany(question.attachments.getRemovedItems())
         ])
+
+        DomainEvents.dispatchEventsForAggregate(question.id);
     }
     
     async findBySlug(slug: string): Promise<Question | null> {

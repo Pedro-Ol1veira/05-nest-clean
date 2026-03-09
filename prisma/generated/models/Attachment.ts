@@ -999,7 +999,7 @@ export interface AttachmentDelegate<ExtArgs extends runtime.Types.Extensions.Int
 /**
  * Fields of the Attachment model
  */
- fields: AttachmentFieldRefs;
+readonly fields: AttachmentFieldRefs;
 }
 
 /**
@@ -1009,7 +1009,7 @@ export interface AttachmentDelegate<ExtArgs extends runtime.Types.Extensions.Int
  * https://github.com/prisma/prisma-client-js/issues/707
  */
 export interface Prisma__AttachmentClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-   [Symbol.toStringTag]: "PrismaPromise"
+  readonly [Symbol.toStringTag]: "PrismaPromise"
   question<T extends Prisma.Attachment$questionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Attachment$questionArgs<ExtArgs>>): Prisma.Prisma__QuestionClient<runtime.Types.Result.GetResult<Prisma.$QuestionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   answer<T extends Prisma.Attachment$answerArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Attachment$answerArgs<ExtArgs>>): Prisma.Prisma__AnswerClient<runtime.Types.Result.GetResult<Prisma.$AnswerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
@@ -1041,11 +1041,11 @@ export interface Prisma__AttachmentClient<T, Null = never, ExtArgs extends runti
  * Fields of the Attachment model
  */
 export interface AttachmentFieldRefs {
-   id: Prisma.FieldRef<"Attachment", 'String'>
-   title: Prisma.FieldRef<"Attachment", 'String'>
-   url: Prisma.FieldRef<"Attachment", 'String'>
-   questionId: Prisma.FieldRef<"Attachment", 'String'>
-   answerId: Prisma.FieldRef<"Attachment", 'String'>
+  readonly id: Prisma.FieldRef<"Attachment", 'String'>
+  readonly title: Prisma.FieldRef<"Attachment", 'String'>
+  readonly url: Prisma.FieldRef<"Attachment", 'String'>
+  readonly questionId: Prisma.FieldRef<"Attachment", 'String'>
+  readonly answerId: Prisma.FieldRef<"Attachment", 'String'>
 }
     
 

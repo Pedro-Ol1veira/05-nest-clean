@@ -42,3 +42,8 @@ export type Comment = Prisma.CommentModel
  * 
  */
 export type Attachment = Prisma.AttachmentModel
+/**
+ * Model Notification
+ * 
+ */
+export type Notification = Prisma.NotificationModel

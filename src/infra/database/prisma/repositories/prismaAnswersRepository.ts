@@ -5,6 +5,7 @@ import { Injectable } from "@nestjs/common";
 import { PrismaService } from "../prisma.service";
 import { PrismaAnswerMapper } from "../mappers/prismaAnswerMapper";
 import { AnswerAttachmentsRepository } from "@/domain/forum/application/repositories/answerAttachmentsRepository";
+import { DomainEvents } from "@/core/events/domainEvents";
 
 
 @Injectable()
@@ -22,6 +23,7 @@ export class PrismaAnswersRepository implements AnswersRepository {
         });
 
         await this.answerAttachmentsRepository.createMany(answer.attachments.getItems());
+        DomainEvents.dispatchEventsForAggregate(answer.id);
     }
     async findById(id: string): Promise<Answer | null> {
         const answer = await this.prisma.answer.findUnique({
@@ -67,7 +69,8 @@ export class PrismaAnswersRepository implements AnswersRepository {
             }),
             this.answerAttachmentsRepository.createMany(answer.attachments.getNewItems()),
             this.answerAttachmentsRepository.deleteMany(answer.attachments.getRemovedItems()),
-        ])
+        ]);
 
+        DomainEvents.dispatchEventsForAggregate(answer.id);
     }
 }
